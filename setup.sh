@@ -30,20 +30,20 @@ elif [ $# -eq 1 ]; then
     echo "------------------------------------------------------------"
     echo "############################### Pulling images..."
     echo "------------------------------------------------------------"
-    docker-compose -f monitoring/docker-compose.unsecure.yml pull
-    docker-compose -f logging/docker-compose.unsecure.yml pull
+    docker compose -f monitoring/docker-compose.unsecure.yml pull
+    docker compose -f logging/docker-compose.unsecure.yml pull
 
     echo "------------------------------------------------------------"
     echo "############################### Building images..."
     echo "------------------------------------------------------------"
-    docker-compose -f monitoring/docker-compose.unsecure.yml build
-    docker-compose -f logging/docker-compose.unsecure.yml build
+    docker compose -f monitoring/docker-compose.unsecure.yml build
+    docker compose -f logging/docker-compose.unsecure.yml build
 
     echo "------------------------------------------------------------"
     echo "############################### Starting monitoring and logging container groups..."
     echo "------------------------------------------------------------"
-    docker-compose -f monitoring/docker-compose.unsecure.yml up --force-recreate -d
-    docker-compose -f logging/docker-compose.unsecure.yml up --force-recreate -d
+    docker compose -f monitoring/docker-compose.unsecure.yml up --force-recreate -d
+    docker compose -f logging/docker-compose.unsecure.yml up --force-recreate -d
 
     echo "------------------------------------------------------------"
     echo "############################### Output from 'docker ps'..."
@@ -91,22 +91,22 @@ elif [ $# -eq 3 ]; then
     echo "------------------------------------------------------------"
     echo "############################### Pulling images..."
     echo "------------------------------------------------------------"
-    docker-compose -f monitoring/docker-compose.secure.yml pull
-    docker-compose -f logging/docker-compose.secure.yml pull
-    docker-compose -f proxy/docker-compose.yml pull
+    docker compose -f monitoring/docker-compose.secure.yml pull
+    docker compose -f logging/docker-compose.secure.yml pull
+    docker compose -f proxy/docker-compose.yml pull
 
     echo "------------------------------------------------------------"
     echo "############################### Building images..."
     echo "------------------------------------------------------------"
-    docker-compose -f monitoring/docker-compose.secure.yml build
-    docker-compose -f logging/docker-compose.secure.yml build
-    docker-compose -f proxy/docker-compose.yml build
+    docker compose -f monitoring/docker-compose.secure.yml build
+    docker compose -f logging/docker-compose.secure.yml build
+    docker compose -f proxy/docker-compose.yml build
 
     echo "------------------------------------------------------------"
     echo "############################### Starting monitoring and logging container groups..."
     echo "------------------------------------------------------------"
-    docker-compose -f monitoring/docker-compose.secure.yml up --force-recreate -d
-    docker-compose -f logging/docker-compose.secure.yml up --force-recreate -d
+    docker compose -f monitoring/docker-compose.secure.yml up --force-recreate -d
+    docker compose -f logging/docker-compose.secure.yml up --force-recreate -d
 
 
     echo "------------------------------------------------------------"
@@ -117,7 +117,7 @@ elif [ $# -eq 3 ]; then
     echo "------------------------------------------------------------"
     echo "############################### Starting proxy container group..."
     echo "------------------------------------------------------------"
-    docker-compose -f proxy/docker-compose.yml up --force-recreate -d
+    docker compose -f proxy/docker-compose.yml up --force-recreate -d
 
     echo "------------------------------------------------------------"
     echo "############################### Tailing the logs of the nginx-letsencrypt container through the creation of the Diffie-Hellman group and the initial setup of your SSL certificates..."
@@ -130,7 +130,7 @@ elif [ $# -eq 3 ]; then
     echo "------------------------------------------------------------"
     echo "############################### Restarting proxy container group..."
     echo "------------------------------------------------------------"
-    docker-compose -f proxy/docker-compose.yml up --force-recreate -d
+    docker compose -f proxy/docker-compose.yml up --force-recreate -d
 
     echo "------------------------------------------------------------"
     echo "############################### Output from 'docker ps'..."
